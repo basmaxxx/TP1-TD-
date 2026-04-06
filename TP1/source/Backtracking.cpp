@@ -7,12 +7,13 @@ void encontrarSeamBacktrackingRec(const std::vector<std::vector<double>>& energi
         }
         return;
     }
-    if (S.second < B.second){
+    else if (S.second < B.second){
         if(j>0){ //bajamos por la izquierda siempre y cuando no estemos en un borde
             S.first.push_back(j - 1);
             S.second+=energia[i][j-1];
             encontrarSeamBacktrackingRec(energia, i + 1, j - 1, n, m, S, B);
             S.first.pop_back();
+
             S.second-=energia[i][j-1];
     }
     
@@ -39,9 +40,11 @@ std::vector<int> encontrarSeamBacktracking(const std::vector<std::vector<double>
     int n= energia.size();
     int m= energia[0].size();
     std::pair<std::vector<int>,double> B;
+    B.second=0.0;
     for (int j = 0; j < m; j++) { //hago la funcion recursiva por cada elemento de la primera fila
         std::pair<std::vector<int>,double> S;
         S.first.push_back(j);
+        S.second = energia[0][j];
         encontrarSeamBacktrackingRec(energia, 1, j, n, m, S, B);
     }
     return B.first;
