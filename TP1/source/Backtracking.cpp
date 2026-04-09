@@ -15,14 +15,12 @@ void encontrarSeamBacktrackingRec(const std::vector<std::vector<double>>& energi
             S.second-=energia[i][j-1];
             S.first.pop_back();
         }
-    
         //en todos los casos vamos a bajar por la rama del medio
         S.first.push_back(j);
         S.second+=energia[i][j];
         encontrarSeamBacktrackingRec(energia, i + 1, j, n, m, S, B);
         S.second-=energia[i][j];
         S.first.pop_back();
-    
         if(j<m-1){ //bajamos por la rama derecha siempre y cuando no estemos en un borde
             S.first.push_back(j + 1);
             S.second+=energia[i][j+1];
@@ -35,9 +33,6 @@ void encontrarSeamBacktrackingRec(const std::vector<std::vector<double>>& energi
         return;
     }    
 }    
-        
-        
-
 
 std::vector<int> encontrarSeamBacktracking(const std::vector<std::vector<double>>& energia) {
     if (energia.empty() || energia[0].empty()) {

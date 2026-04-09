@@ -28,7 +28,6 @@ void encontrarSeamFuerzaBrutaRec(const std::vector<std::vector<double>>& energia
     S.push_back(j);
     encontrarSeamFuerzaBrutaRec(energia, i + 1, j, n, m, S, B, energiaActual + energia[i][j], mejorEnergia);
     S.pop_back();
-    
     if(j<m-1){ //bajamos por la rama derecha siempre y cuando no estemos en un borde
         S.push_back(j + 1);
         encontrarSeamFuerzaBrutaRec(energia, i + 1, j + 1, n, m, S, B, energiaActual + energia[i][j + 1], mejorEnergia);
@@ -52,5 +51,3 @@ std::vector<int> encontrarSeamFuerzaBruta(const std::vector<std::vector<double>>
     return B;
 }
 
-
-//ESTA MAL CONTAR DESDE CERO Y NO DE 1?????
