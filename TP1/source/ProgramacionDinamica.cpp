@@ -11,7 +11,7 @@ std::pair<double, std::vector<int>> encontrarSeamPDRec(const std::vector<std::ve
         return {std::numeric_limits<double>::infinity(), {}}; 
     }
 
-    if (memo[i][j].first != -1.0) {             // si ya resolvió este subproblema reutiliza el resultado (memorización)
+    if (memo[i][j].first != -1) {             // si ya resolvió este subproblema reutiliza el resultado (memorización)
         return memo[i][j]; 
     }
 
@@ -48,7 +48,7 @@ std::vector<int> encontrarSeamPD(const std::vector<std::vector<double>>& energia
 
     int n = energia.size();         // filas
     int m = energia[0].size();      // columnas
-    std::vector<std::vector<std::pair<double, std::vector<int>>>> memo(n, std::vector<std::pair<double, std::vector<int>>>(m, {-1.0, {}}));     // tabla de memoización
+    std::vector<std::vector<std::pair<double, std::vector<int>>>> memo(n, std::vector<std::pair<double, std::vector<int>>>(m, {-1, {}}));     // tabla de memoización
     double mejorEnergia = std::numeric_limits<double>::infinity();
     std::vector<int> mejorCamino;
 
